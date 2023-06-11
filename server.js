@@ -2,8 +2,6 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-
-
 const mysql = require('mysql')
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -22,7 +20,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-connection.end()
+// connection.end()
 
 
 
