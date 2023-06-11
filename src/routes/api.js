@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     });
 });
 
-router.post("/add", async (req, res) => {
+router.post("/register", async (req, res) => {
     const { name, email, password, role } = req.body;
     bcrypt.hash(password, saltRounds, function (err, hash) {
         pool.query("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)", [name, email, hash, role], (err, result) => {
