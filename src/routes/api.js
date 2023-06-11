@@ -8,7 +8,7 @@ const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const randomstring = require("randomstring");
 
-router.get("/", async (req, res) => {
+router.get("/users", async (req, res) => {
     pool.query("SELECT * FROM users", (err, users, fields) => {
         if (err) {
             console.log(err);
