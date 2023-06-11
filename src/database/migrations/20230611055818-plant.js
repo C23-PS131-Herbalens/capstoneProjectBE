@@ -21,7 +21,6 @@ exports.up = (db, callback) => {
             plant_id: { type: "int", primaryKey: true, autoIncrement: true },
             plant_name: { type: "string" },
             image: { type: "string" },
-            detail: { type: "string" },
             description: "text",
             benefit: "text",
             list_recipe: "text",
