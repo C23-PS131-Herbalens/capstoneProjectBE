@@ -16,7 +16,7 @@ exports.setup = (options, seedLink) => {
 
 exports.up = (db, callback) => {
     db.createTable(
-        "plant",
+        "plants",
         {
             plant_id: { type: "int", primaryKey: true, autoIncrement: true },
             plant_name: { type: "string" },
@@ -30,7 +30,7 @@ exports.up = (db, callback) => {
 };
 
 exports.down = (db, callback) => {
-    return db.dropTable("plant", callback);
+    return db.dropTable("plants", callback);
 };
 
 exports._meta = {

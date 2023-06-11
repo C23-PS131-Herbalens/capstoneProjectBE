@@ -16,13 +16,13 @@ exports.setup = (options, seedLink) => {
 
 exports.up = (db, callback) => {
     db.createTable(
-        "taxonomy",
+        "taxonomys",
         {
             plant_id: {
                 type: "int",
                 foreignKey: {
                     name: "plant_id",
-                    table: "plant",
+                    table: "plants",
                     rules: {
                         onDelete: "CASCADE",
                     },
@@ -42,7 +42,7 @@ exports.up = (db, callback) => {
 };
 
 exports.down = (db, callback) => {
-    return db.dropTable("taxonomy", callback);
+    return db.dropTable("taxonomys", callback);
 };
 
 exports._meta = {
