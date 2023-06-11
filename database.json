@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "host": "localhost",
+        "user": "root",
+        "password": "",
+        "database": "herbalens",
+        "driver": "mysql",
+        "multipleStatements": true
+    }
+}
