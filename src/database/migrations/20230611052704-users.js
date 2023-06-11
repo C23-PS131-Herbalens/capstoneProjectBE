@@ -22,7 +22,7 @@ exports.up = (db, callback) => {
             email: { type: "string", unique: true },
             name: "string",
             password: "string",
-            role: "int",
+            role: { type: "string", defaultValue: 0 },
         },
         callback
     );
