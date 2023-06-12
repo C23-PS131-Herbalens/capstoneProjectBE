@@ -3,7 +3,6 @@ const plantController = {
     async getPlants(req, res) {
         let plantName = req.query.name
         if (plantName) {
-            res.send({ plantName })
             pool.query("SELECT * FROM plants WHERE plant_name = ? LIMIT 1", [plantName], (err, plants, fields) => {
                 if (err) {
                     console.log(err);
