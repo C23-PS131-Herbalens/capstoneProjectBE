@@ -1,6 +1,7 @@
+const dotenv = require('dotenv')
 const express = require('express')
 const app = express()
-const port = 3000
+const port = dotenv.config().parsed.PORT
 const routes = require('./routes/api')
 
 
