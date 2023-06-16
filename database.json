@@ -1,8 +1,8 @@
 {
     "dev": {
-        "host": "localhost",
+        "host": "104.198.139.247",
         "user": "root",
-        "password": "",
+        "password": "root",
         "database": "herbalens",
         "driver": "mysql",
         "multipleStatements": true
