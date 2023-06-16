@@ -27,7 +27,7 @@ const plantController = {
                         return { ...item, taxonomy: _taxonomy };
                     });
 
-                    res.send(plantData);
+                    res.send(plantData[0]);
                 }
             );
         } else {
@@ -84,7 +84,7 @@ const plantController = {
                     return { ...item, taxonomy: _taxonomy };
                 });
 
-                res.send(plantData);
+                res.send(plantData[0]);
             }
         );
     },
