@@ -28,8 +28,4 @@ router.post("/bookmarks", BookmarkControllers.addBookmarks);
 router.delete("/bookmarks", BookmarkControllers.deleteBookmarks);
 router.get("/bookmarks/:userId", BookmarkControllers.getBookmarks);
 
-router.get("/test", (req, res) => {
-  res.render("test");
-});
-
 module.exports = router;
