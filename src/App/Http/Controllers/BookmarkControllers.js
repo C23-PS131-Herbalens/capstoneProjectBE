@@ -8,7 +8,7 @@ const BookmarkControllers = {
             [user_id],
             (err, bookmarks) => {
                 if (err) {
-                    res.send(err);
+                    return res.send(err);
                 }
                 const bookmarksData = bookmarks.map((item) => {
                     let _taxonomy = {};
@@ -26,7 +26,7 @@ const BookmarkControllers = {
                     return { ...item, taxonomy: _taxonomy };
                 });
 
-                res.send(bookmarksData);
+                return res.send(bookmarksData);
             }
         );
     },
@@ -35,9 +35,9 @@ const BookmarkControllers = {
         const { user_id, plant_id } = req.body;
         pool.query("INSERT INTO bookmarks (user_id, plant_id) VALUES (?, ?)", [user_id, plant_id], (err) => {
             if (err) {
-                res.send(err);
+                return res.send(err);
             }
-            res.send("Bookmark added");
+            return res.send("Bookmark added");
         });
     },
 
@@ -45,9 +45,9 @@ const BookmarkControllers = {
         const { user_id, plant_id } = req.body;
         pool.query("DELETE FROM bookmarks WHERE user_id = ? AND plant_id = ?", [user_id, plant_id], (err) => {
             if (err) {
-                res.send(err);
+                return res.send(err);
             }
-            res.send("Bookmark deleted");
+            return res.send("Bookmark deleted");
         });
     },
 };

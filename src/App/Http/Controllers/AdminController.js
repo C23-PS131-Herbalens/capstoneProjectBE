@@ -9,10 +9,10 @@ const AdminControllers = {
     };
 
     if (typeof localStorage === "undefined" || localStorage === null) {
-      res.redirect("/login");
+      return res.redirect("/login");
     }
     pool.query("SELECT * FROM users WHERE role != 1", (err, data) => {
-      res.render("admin", { data, adminData });
+      return res.render("admin", { data, adminData });
     });
   },
 };

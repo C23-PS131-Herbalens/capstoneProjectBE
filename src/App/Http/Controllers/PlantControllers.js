@@ -9,7 +9,7 @@ const plantController = {
         [plantName],
         (err, plants, fields) => {
           if (err) {
-            res.send(err);
+            return res.send(err);
           }
           const plantData = plants.map((item) => {
             let _taxonomy = {};
@@ -27,7 +27,7 @@ const plantController = {
             return { ...item, taxonomy: _taxonomy };
           });
 
-          res.send(plantData[0]);
+          return res.send(plantData[0]);
         }
       );
     } else {
@@ -35,7 +35,7 @@ const plantController = {
         "SELECT p.plant_id, p.plant_name, p.image, p.description, p.benefit, t.*, GROUP_CONCAT(ls.recipe SEPARATOR ';;') AS recipes FROM plants p INNER JOIN taxonomy t ON p.plant_id = t.plant_id INNER JOIN recipe_plants_list rp ON p.plant_id = rp.plant_id INNER JOIN recipe_list ls ON ls.recipe_id = rp.recipe_id GROUP BY p.plant_id",
         (err, plants, fields) => {
           if (err) {
-            res.send(err);
+            return res.send(err);
           }
 
           const plantData = plants.map((item) => {
@@ -54,7 +54,7 @@ const plantController = {
             return { ...item, taxonomy: _taxonomy };
           });
 
-          res.send(plantData);
+          return res.send(plantData);
         }
       );
     }
@@ -66,7 +66,7 @@ const plantController = {
       [plantId],
       (err, plants, fields) => {
         if (err) {
-          res.send(err);
+          return res.send(err);
         }
         const plantData = plants.map((item) => {
           let _taxonomy = {};
@@ -84,7 +84,7 @@ const plantController = {
           return { ...item, taxonomy: _taxonomy };
         });
 
-        res.send(plantData[0]);
+        return res.send(plantData[0]);
       }
     );
   },
@@ -96,13 +96,13 @@ const plantController = {
       email: req.app.get("email"),
     };
     if (typeof localStorage === "undefined" || localStorage === null) {
-      res.redirect("/login");
+      return res.redirect("/login");
     }
     pool.query(
       "SELECT p.plant_id, p.plant_name, p.image, p.description, p.benefit, t.*, GROUP_CONCAT(ls.recipe SEPARATOR ';;') AS recipes FROM plants p INNER JOIN taxonomy t ON p.plant_id = t.plant_id INNER JOIN recipe_plants_list rp ON p.plant_id = rp.plant_id INNER JOIN recipe_list ls ON ls.recipe_id = rp.recipe_id GROUP BY p.plant_id",
       (err, plants, fields) => {
         if (err) {
-          res.send(err);
+          return res.send(err);
         }
 
         const plantData = plants.map((item) => {
@@ -121,7 +121,7 @@ const plantController = {
           return { ...item, taxonomy: _taxonomy };
         });
 
-        res.render("plants", { data: plantData, adminData });
+        return res.render("plants", { data: plantData, adminData });
       }
     );
   },

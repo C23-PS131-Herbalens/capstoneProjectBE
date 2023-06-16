@@ -3,9 +3,9 @@ const UserControllers = {
     async getUsers(req, res) {
         pool.query("SELECT * FROM users", (err, users, fields) => {
             if (err) {
-                console.log(err);
+                return res.send(err);
             }
-            res.send({ users });
+            return res.send({ users });
         });
     }
 }
