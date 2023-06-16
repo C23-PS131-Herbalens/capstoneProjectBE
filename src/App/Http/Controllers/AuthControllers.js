@@ -23,10 +23,14 @@ const AuthControllers = {
     pool.query("SELECT * FROM users WHERE email = ? LIMIT 1", [email], (err, data) => {
       // check user password & compare with hash password
       bcrypt.compare(password, data[0].password, function (err, success) {
+        let localStorage = req.app.get("localStorage");
         if (success) {
           // create token login
           if (data[0].role === "1") {
-            return res.render("admin", { data: data[0] });
+            localStorage.setItem('name', data[0].name)
+            localStorage.setItem('email', data[0].email)
+            localStorage.setItem('role', data[0].role)
+            return res.redirect("/");
           } else {
             let token = jwt.sign(data[0], randomstring.generate(255));
             res.send({ token });
@@ -37,7 +41,11 @@ const AuthControllers = {
   },
 
   async login(req, res) {
-    res.render("login");
+    if (typeof localStorage === "undefined" || localStorage === null) {
+      res.render("login");
+    } else {
+      res.render("admin");
+    }
   },
 };
 
