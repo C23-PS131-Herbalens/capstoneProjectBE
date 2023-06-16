@@ -11,12 +11,15 @@ const AdminControllers = require("../App/Http/Controllers/AdminController"); // 
 router.get("/", AdminControllers.index);
 router.get("/users", UserControllers.getUsers);
 router.get("/login", AuthControllers.login);
+router.get("/logout", AuthControllers.logout);
+
 
 router.post("/register", AuthControllers.registration);
 router.post("/login", AuthControllers.authentication);
 // Route for get data plant
 
 router.get("/plants", plantController.getPlants);
+router.get('/plant-list', plantController.listPlant)
 
 router.get("/plants/:id", plantController.getPlantById);
 
@@ -24,5 +27,9 @@ router.get("/plants/:id", plantController.getPlantById);
 router.post("/bookmarks", BookmarkControllers.addBookmarks);
 router.delete("/bookmarks", BookmarkControllers.deleteBookmarks);
 router.get("/bookmarks/:userId", BookmarkControllers.getBookmarks);
+
+router.get("/test", (req, res) => {
+  res.render("test");
+});
 
 module.exports = router;

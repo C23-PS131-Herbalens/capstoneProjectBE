@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>User List | Herbalens</title>
+    <title>Plant List | Herbalens</title>
 
     <meta name="description" content="" />
 
@@ -62,12 +62,12 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="http://localhost:3000/" class="menu-link">
                 <div data-i18n="Analytics">User List</div>
               </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="http://localhost:3000/plant-list" class="menu-link">
                 <div data-i18n="Analytics">Plant List</div>
               </a>
@@ -112,7 +112,7 @@
                           <div class="flex-grow-1">
                             <span class="fw-semibold d-block"><%= adminData.name %></span>
                             <small class="text-muted"><%= adminData.email %></small>
-                            <br>
+                            <br />
                             <small class="text-muted">Admin</small>
                           </div>
                         </div>
@@ -144,16 +144,18 @@
                 <thead>
                   <tr>
                     <td>Nomor</td>
-                    <td>Nama</td>
-                    <td>Email</td>
+                    <td>Image</td>
+                    <td>Nama Tanaman</td>
+                    <td>Spesies</td>
                   </tr>
                 </thead>
                 <tbody>
                   <%data.map((item, index) => {%>
                   <tr>
                     <td><%= index+=1 %></td>
-                    <td><%= item.name %></td>
-                    <td><%= item.email %></td>
+                    <td><img src="<%= item.image %>" alt="gambar" width="100px" height="100px" /></td>
+                    <td><%= item.plant_name %></td>
+                    <td><%= item.taxonomy.species %></td>
                   </tr>
                   <%})%>
                 </tbody>
